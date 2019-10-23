@@ -1,0 +1,211 @@
+<demo-block>
+  <van-tabs active="{{ 0 }}" bind:change="onChange" line-width="21" color="#00BC71">
+    <van-tab title="话费充值" title-style="color:#00BC71">
+      <view class="content">
+        <view style="height:23px"/>
+        <view class="phone-box">
+          <view class="phone-logo">
+            <image src='/style/images/icon.png' style='display:inline;' mode="aspectFit"></image>
+          </view>
+          <view class="phone-content">
+            <input type="number" class="phone-number" placeholder="请输入手机号" bindblur='onChangeNumber' bindconfirm="onChangeNumber"/>
+            <text class="phone-remark">{{remark}}</text>
+            <view style="height:6px"/>
+          </view>
+          <view class="phone-close" data-item="123" bindtap="clearText">
+            <image src='/style/images/guanbi.png' style='display:inline' mode="aspectFit"></image>
+          </view>
+        </view>
+        <view class="items-box" wx:for="{{listData}}" wx:for-index="idx" wx:for-item="item" bindtap="paySingle">
+            <van-col span="8">
+              <view class="item-hot" wx:if="{{item.hot}}">
+                <image src="/style/images/hot.png" style='display:inline' mode="aspectFit"/>
+              </view>
+              <view class="item-box">
+                <view class="item-content">
+                  <view>
+                    <text class="item-content-text">{{item.amt/100}}元</text><br/>
+                  </view>
+                  <text class="phone-remark-small">仅售{{item.price/100}}元</text>
+              </view>
+            </view>
+          </van-col>
+          <!-- <van-row>
+            <van-col span="8">
+              <view class="item-hot">
+                <image src="/style/images/hot.png" style='display:inline' mode="aspectFit"/>
+              </view>
+              <view class="item-box">
+                <view class="item-content">
+                  <view>
+                    <text class="item-content-text">1元</text><br/>
+                  </view>
+                  <text class="phone-remark-small">仅售1.30元</text>
+                </view>
+              </view>
+            </van-col>
+            <van-col span="8">
+              <view class="item-hot-hidden">
+                <image src="/style/images/hot.png" style='display:inline' mode="aspectFit"/>
+              </view>
+              <view class="item-box">
+                <view class="item-content">
+                  <view>
+                    <text class="item-content-text">5元</text><br/>
+                  </view>
+                  <text class="phone-remark-small">仅售6.30元</text>
+                </view>
+              </view>
+            </van-col>
+            <van-col span="8">
+              <view class="item-hot-hidden">
+                <image src="/style/images/hot.png" style='display:inline' mode="aspectFit"/>
+              </view>
+              <view class="item-box">
+                <view class="item-content">
+                  <view>
+                    <text class="item-content-text">8元</text><br/>
+                  </view>
+                  <text class="phone-remark-small">仅售10.30元</text>
+                </view>
+              </view>
+            </van-col>
+          </van-row>
+          <van-row>
+            <van-col span="8">
+              <view class="item-hot-hidden">
+                <image src="/style/images/hot.png" style='display:inline' mode="aspectFit"/>
+              </view>
+              <view class="item-box">
+                <view class="item-content">
+                  <view>
+                    <text class="item-content-text">10元</text><br/>
+                  </view>
+                  <text class="phone-remark-small">仅售10.49元</text>
+                </view>
+              </view>
+            </van-col>
+            <van-col span="8">
+              <view class="item-hot">
+                <image src="/style/images/hot.png" style='display:inline' mode="aspectFit"/>
+              </view>
+              <view class="item-box">
+                <view class="item-content">
+                  <view>
+                    <text class="item-content-text">20元</text><br/>
+                  </view>
+                  <text class="phone-remark-small">仅售20.00元</text>
+                </view>
+              </view>
+            </van-col>
+            <van-col span="8">
+              <view class="item-hot-hidden">
+                <image src="/style/images/hot.png" style='display:inline' mode="aspectFit"/>
+              </view>
+              <view class="item-box">
+                <view class="item-content">
+                  <view>
+                    <text class="item-content-text">50元</text><br/>
+                  </view>
+                  <text class="phone-remark-small">仅售49.30元</text>
+                </view>
+              </view>
+            </van-col>
+          </van-row>
+          <van-row>
+            <van-col span="8">
+              <view class="item-hot-hidden">
+                <image src="/style/images/hot.png" style='display:inline' mode="aspectFit"/>
+              </view>
+              <view class="item-box">
+                <view class="item-content">
+                  <view>
+                    <text class="item-content-text">100元</text><br/>
+                  </view>
+                  <text class="phone-remark-small">仅售99.98元</text>
+                </view>
+              </view>
+            </van-col>
+          </van-row> -->
+        </view>
+      </view>
+    </van-tab>
+    <van-tab title="批量充值" title-style="color:#00BC71">
+      <view class="content">
+        <view style="height:1px"/>
+        <view class="money-box">
+          <input type="number" class="money-input" placeholder='请输入批充金额'/>
+        </view>
+        <view class="number-box">
+          <view style="height:20px"></view>
+          <view class="number-logo">
+            <image src='/style/images/icon.png' style='display:inline' mode="aspectFit"></image>
+          </view>
+          <textarea class="number-textarea" bindfocus="onFocusTextarea" bindblur="onBlurTextarea" bindinput='onChangeTextarea'/>
+          <view style="position:fixed;top:180px;left:100px;">
+          <text hidden="{{hiddenName}}">请将批量充值号码输于此处\n多个号码以“,”隔开\n例：17088886666，\n17066668888，17046464646</text>
+          </view>
+          <view class="number-close">
+            <image src='/style/images/guanbi.png' style='display:inline' mode="aspectFit"></image>
+          </view>
+          <view class="delive-line"></view>
+          <view class="amount-box">
+            <text class="amount-label">总需要支付：</text><text class="amount-text">00元</text>
+          </view>
+        </view>
+        <view class="import-box">
+          <view class="import-logo">
+            <image src='/style/images/excel.png' style='height:25px;width:25px;display:inline' mode="aspectFit"></image>
+          </view>
+          <view class="import-button-box">
+            <van-button plain type="primary" size="small" bindtap="chooseMessageFile">excel导入</van-button>
+          </view>
+          <view class="import-view-box">
+            <text style="color:#696969;font-size:14;">查看模版 ></text>
+          </view>
+        </view> 
+
+        <view style="width:90%; margin:20px;">
+          <van-button type="primary" size="large">立即充值</van-button>
+        </view>
+      </view>
+    </van-tab>
+  </van-tabs>
+</demo-block>
+<van-toast id="van-toast" />
+<demo-block>
+  <van-divider contentPosition="center" customStyle="color: #6C6C6C;font-size: 10px; padding: 0px 56px;">我是有底线的</van-divider>
+  <van-tabbar
+    active="{{ active }}"
+    active-color="#00BC71"
+    inactive-color="#000"
+    bind:change="onChange"
+  >
+    <van-tabbar-item>
+      <image
+        slot="icon"
+        src="{{ icon.homeNormal }}"
+        mode="aspectFit"
+      />
+      <image
+        slot="icon-active"
+        src="{{ icon.homeActive }}"
+        mode="aspectFit"
+      />
+      首页
+    </van-tabbar-item>
+    <van-tabbar-item>
+      <image
+        slot="icon"
+        src="{{ icon.mineNormal }}"
+        mode="aspectFit"
+      />
+      <image
+        slot="icon-active"
+        src="{{ icon.mineActive }}"
+        mode="aspectFit"
+      />
+      我的
+    </van-tabbar-item>
+  </van-tabbar>
+</demo-block>

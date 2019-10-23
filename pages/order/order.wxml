@@ -1,0 +1,6 @@
+<view style="display: flex;flex-direction: row;justify-content:space-between;align-items: center;margin-top: 5%;">
+  <view class="money-box">
+    <input type="number" class="money-input" placeholder='请输入号码查询'/>
+  </view>
+  <van-button style="padding-right:30px;" type="primary" size="normal">搜索</van-button>
+</view>

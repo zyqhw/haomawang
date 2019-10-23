@@ -1,0 +1,11 @@
+<!--pages/login/login.wxml-->
+<view class="page">
+    <view class="page__hd">
+        <view class="page__desc">允许微信授权后，可体验更多功能</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+        <button class="weui-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+        
+        <button class="weui-btn" type="default" bindtap="goIndex">返回首页</button>
+    </view>
+</view>
